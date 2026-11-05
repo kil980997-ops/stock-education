@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Explore cryptocurrency, stock market, forex and gold market education. Learn about global financial markets.">
+<title>ARK Market Education | Explore Global Markets</title>
+<style>
+:root{--bg:#071426;--panel:#10243c;--gold:#e8c77a;--gold2:#cda85b;--text:#f5f7fa;--muted:#aab8c9;--line:rgba(232,199,122,.2);}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;}
+a{text-decoration:none;color:inherit;}
+.container{width:min(1120px,90%);margin:auto;}
+header{position:sticky;top:0;z-index:10;background:rgba(7,20,38,.94);border-bottom:1px solid var(--line);backdrop-filter:blur(12px);}
+.nav{min-height:68px;display:flex;align-items:center;justify-content:space-between;gap:20px;}
+.logo{color:var(--gold);font-size:16px;font-weight:800;letter-spacing:1.5px;}
+.nav-links{display:flex;gap:24px;color:var(--muted);font-size:14px;}
+.nav-links a:hover{color:var(--gold);}
+
+/* Hero */
+.hero{padding:70px 0 60px;background:radial-gradient(circle at 80% 20%,rgba(46,111,164,.22),transparent 32%),linear-gradient(135deg,#071426,#0c2038);}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:46px;align-items:center;}
+.eyebrow{color:var(--gold);font-size:12px;font-weight:bold;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:16px;}
+h1{font-size:clamp(34px,4.5vw,50px);line-height:1.12;margin-bottom:20px;}
+h1 span{color:var(--gold);}
+.hero-copy{color:var(--muted);font-size:17px;max-width:520px;margin-bottom:28px;}
+.primary-btn{display:inline-block;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#101a28;font-weight:800;padding:14px 24px;border-radius:7px;transition:.2s;}
+.primary-btn:hover{transform:translateY(-2px);filter:brightness(1.08);}
+.hero-media{border-radius:16px;overflow:hidden;border:1px solid var(--line);box-shadow:0 20px 55px rgba(0,0,0,.3);background:#0a1b30;display:flex;justify-content:center;}
+.hero-media video{display:block;width:100%;height:auto;max-height:520px;object-fit:cover;}
+
+/* Sections */
+section{padding:60px 0;}
+.section-heading{text-align:center;max-width:680px;margin:0 auto 38px;}
+.section-heading h2{font-size:30px;margin-bottom:12px;}
+.section-heading p{color:var(--muted);}
+
+/* Courses */
+.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.course-card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:26px;display:flex;flex-direction:column;min-height:260px;transition:.25s;}
+.course-card:hover{transform:translateY(-5px);border-color:var(--gold);}
+.course-icon{font-size:34px;margin-bottom:16px;}
+.course-card h3{font-size:20px;margin-bottom:11px;}
+.course-card p{color:var(--muted);font-size:14px;margin-bottom:22px;flex:1;}
+.course-btn{display:block;text-align:center;background:transparent;color:var(--gold);border:1px solid var(--gold);border-radius:7px;padding:12px;font-size:14px;font-weight:bold;transition:.2s;}
+.course-btn:hover{background:var(--gold);color:#101a28;}
+
+/* Learn media band */
+.learn{background:#0a1b30;}
+.learn-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+.learn-media{border-radius:16px;overflow:hidden;border:1px solid var(--line);}
+.learn-media img{display:block;width:100%;height:auto;}
+.learn-text h2{font-size:28px;margin-bottom:14px;}
+.learn-text p{color:var(--muted);margin-bottom:14px;}
+.learn-text ul{list-style:none;color:var(--muted);font-size:15px;}
+.learn-text li{padding:7px 0 7px 22px;position:relative;}
+.learn-text li::before{content:'\25C8';color:var(--gold);position:absolute;left:0;}
+
+/* Footer */
+footer{padding:32px 0;border-top:1px solid var(--line);color:var(--muted);font-size:12px;}
+.footer-content{display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap;}
+.disclaimer{margin-top:18px;max-width:900px;line-height:1.8;}
+
+@media (max-width:800px){
+  .hero-grid,.learn-grid{grid-template-columns:1fr;}
+  .course-grid{grid-template-columns:1fr;}
+  .learn-media{order:-1;}
+}
+
+/* WhatsApp floating button */
+.wa-float{position:fixed;bottom:26px;right:26px;z-index:60;width:58px;height:58px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 26px rgba(37,211,102,.45);animation:bob 2.4s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(-7px);}}
+.wa-float svg{width:31px;height:31px;fill:#fff;}
+
+/* Auto popup */
+.overlay{position:fixed;inset:0;z-index:100;background:rgba(3,7,16,.72);backdrop-filter:blur(5px);display:none;align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .35s;}
+.overlay.show{display:flex;opacity:1;}
+.modal{position:relative;width:100%;max-width:410px;background:linear-gradient(160deg,var(--panel),#0a1b30);border:1px solid var(--line);border-radius:20px;padding:36px 30px 32px;text-align:center;box-shadow:0 40px 80px rgba(0,0,0,.6);transform:translateY(18px) scale(.97);transition:transform .35s;}
+.overlay.show .modal{transform:translateY(0) scale(1);}
+.modal-close{position:absolute;top:13px;right:15px;width:32px;height:32px;border:none;border-radius:50%;background:rgba(255,255,255,.08);color:var(--text);font-size:18px;cursor:pointer;line-height:1;transition:background .2s;}
+.modal-close:hover{background:rgba(255,255,255,.18);}
+.modal-ic{width:64px;height:64px;border-radius:50%;background:#25d366;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;box-shadow:0 10px 24px rgba(37,211,102,.4);}
+.modal-ic svg{width:35px;height:35px;fill:#fff;}
+.modal h3{font-size:22px;font-weight:800;margin-bottom:10px;}
+.modal p{color:var(--muted);font-size:15px;margin-bottom:22px;}
+.modal .modal-btn{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:linear-gradient(135deg,var(--gold),var(--gold2));color:#101a28;font-weight:800;padding:14px;border-radius:8px;font-size:16px;transition:.2s;}
+.modal .modal-btn:hover{filter:brightness(1.08);}
+.modal small{display:block;margin-top:14px;color:var(--muted);font-size:12px;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a class="logo" href="#">ARK MARKET EDUCATION</a>
+    <nav class="nav-links">
+      <a href="#courses">Courses</a>
+      <a href="#learn">About</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container hero-grid">
+      <div>
+        <div class="eyebrow">Global Financial Markets</div>
+        <h1>Explore the World of <span>Financial Markets</span></h1>
+        <p class="hero-copy">Educational resources covering cryptocurrency, stocks, forex and gold. Build your market knowledge at your own pace.</p>
+        <a class="primary-btn" href="#courses">Explore Our Courses</a>
+      </div>
+      <div class="hero-media">
+        <video src="promo.mp4" autoplay muted loop playsinline preload="auto"></video>
+      </div>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses">
+    <div class="container">
+      <div class="section-heading">
+        <div class="eyebrow">Our Learning Programs</div>
+        <h2>Choose Your Learning Interest</h2>
+        <p>Select a topic to learn more about the corresponding educational course.</p>
+      </div>
+      <div class="course-grid">
+        <article class="course-card">
+          <div class="course-icon">&#8383;</div>
+          <h3>Cryptocurrency Course</h3>
+          <p>Explore blockchain technology, digital assets and cryptocurrency market fundamentals.</p>
+          <a class="course-btn" href="https://wa.me/16038525959?text=I'd%20like%20to%20learn%20more%20about%20the%20cryptocurrency%20course." target="_blank" rel="noopener noreferrer">Learn More</a>
+        </article>
+        <article class="course-card">
+          <div class="course-icon">&#9641;</div>
+          <h3>Stock Market Course</h3>
+          <p>Learn about stocks, market sectors, company fundamentals and investing concepts.</p>
+          <a class="course-btn" href="https://wa.me/16038525959?text=I'd%20like%20to%20learn%20more%20about%20the%20stock%20market%20course." target="_blank" rel="noopener noreferrer">Learn More</a>
+        </article>
+        <article class="course-card">
+          <div class="course-icon">&#9670;</div>
+          <h3>Forex & Gold Course</h3>
+          <p>Discover currency markets, gold trading concepts and market analysis fundamentals.</p>
+          <a class="course-btn" href="https://wa.me/16038525959?text=I'd%20like%20to%20learn%20more%20about%20the%20forex%20and%20gold%20course." target="_blank" rel="noopener noreferrer">Learn More</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Learn with media -->
+  <section class="learn" id="learn">
+    <div class="container learn-grid">
+      <div class="learn-media">
+        <img src="https://storage.googleapis.com/ot-pt/code_agent/nano2_image_generator/2026-11-06/282d2e0c1361/ark_learn.png?Expires=1796498189&GoogleAccessId=gcs-owner%40oreateai-434511.iam.gserviceaccount.com&Signature=JgVUUm0TmCHp6p6Cx5iMY033aKciC6g0dbEb7QrJ%2BMWdyScnwv3Q7DAwCl5QyEo840E7XSIw5NY%2F9W4CJWskc%2FidQrzuqQKSZxalEPKCdgrcXyM44IzOq8%2BY8TWgqU2fyV9766q1fLL3UczS2gj1dgAiseneqj0jpGUv2LRuVyVzW5JUCtONwhel0CYnwoW8c3Uc%2BfTyYTzEy930HxRRjE2xLsO2jPVYgg09PaHc5iW7lwv%2Bh6E8ntt5JVgkKri76C7ftfE%2B0681LjuKhi8bw0y9hWigU1a5vpAHm61U6UXvjkrJeCoGh%2FfZOBtciAkAkUoxbEw2PmiqQR%2BULHqgcw%3D%3D" alt="Studying global markets">
+      </div>
+      <div class="learn-text">
+        <div class="eyebrow">Learning Approach</div>
+        <h2>Build Your Market Knowledge</h2>
+        <p>A structured introduction to financial markets and the concepts behind them.</p>
+        <ul>
+          <li>Market fundamentals and key terminology</li>
+          <li>How economic news influences markets</li>
+          <li>Understanding volatility and investment risk</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-content">
+      <div>&copy; <span id="year"></span> ARK MARKET EDUCATION</div>
+      <div>Educational Information Only</div>
+    </div>
+    <div class="disclaimer">
+      <strong>Risk Disclaimer:</strong> All content on this website is provided for general educational and informational purposes only. It does not constitute investment advice or a recommendation to buy or sell any financial instrument. Financial markets involve risk, and prices can fluctuate. Past performance does not guarantee future results. Selecting a course button opens WhatsApp, a third-party service subject to its own privacy terms.
+    </div>
+  </div>
+</footer>
+
+<script>
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+<!-- Floating WhatsApp button -->
+<a class="wa-float" href="https://wa.me/16038525959" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.511 5.26l-.999 3.648 3.477-.907zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/></svg>
+</a>
+
+<!-- Auto popup (7s) -->
+<div class="overlay" id="leadPopup">
+  <div class="modal">
+    <button class="modal-close" id="popupClose" aria-label="Close">&times;</button>
+    <div class="modal-ic">
+      <svg viewBox="0 0 24 24"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.511 5.26l-.999 3.648 3.477-.907z"/></svg>
+    </div>
+    <h3>Interested in Market Education?</h3>
+    <p>Chat with our team on WhatsApp and explore our cryptocurrency, stock, forex &amp; gold courses.</p>
+    <a class="modal-btn" href="https://wa.me/16038525959" target="_blank" rel="noopener">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.945C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.82 9.82 0 001.511 5.26l-.999 3.648 3.477-.907z"/></svg>
+      Chat on WhatsApp
+    </a>
+    <small>Available 24/7</small>
+  </div>
+</div>
+
+<script>
+(function(){
+  var overlay=document.getElementById('leadPopup');
+  var closeBtn=document.getElementById('popupClose');
+  var timer=setTimeout(function(){overlay.classList.add('show');},7000);
+  function hide(){overlay.classList.remove('show');}
+  closeBtn.addEventListener('click',hide);
+  overlay.addEventListener('click',function(e){if(e.target===overlay){hide();}});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'){hide();}});
+})();
+</script>
+
+</body>
+</html>
